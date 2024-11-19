@@ -1,66 +1,66 @@
-## Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+# Foundry Fundamentals - Section 2: Fund Me
 
-Foundry consists of:
+This repository contains the project developed during **Section 2** of the [Foundry Fundamentals](https://updraft.cyfrin.io/courses/foundry) course by Cyfrin. In this section, we implemented the "Fund Me" smart contract, allowing users to contribute funds to a specific project while using Chainlink oracles for currency conversion.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Section Objectives
 
-## Documentation
+- **Implement the "Fund Me" Contract**: Create a contract that allows users to send funds and tracks contributors and their contributions.
+- **Integrate Chainlink Oracles**: Use oracles to fetch the current ETH to USD exchange rate to ensure accurate contributions.
+- **Develop Testing and Deployment Scripts**: Write tests to verify the contract's functionality and scripts for deployment to test networks.
 
-https://book.getfoundry.sh/
+## Features Implemented
 
-## Usage
+- **Contribution Tracking**: The contract stores the address of each contributor and the amount contributed.
+- **Currency Conversion**: Integration with Chainlink oracles to fetch real-time ETH/USD conversion rates.
+- **Minimum Contribution Threshold**: Ensures each contribution meets a minimum value in USD before being accepted.
+- **Withdrawal Functionality**: Allows the contract owner to withdraw the accumulated funds.
 
-### Build
+## Prerequisites
 
-```shell
-$ forge build
-```
+- Basic knowledge of Solidity and smart contracts.
+- Development environment set up with Foundry and associated tools.
 
-### Test
+## How to Run the Project
 
-```shell
-$ forge test
-```
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Khetreiqcer/Sldt.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd fund-me
+   ```
+3. Install the Foundry toolchain if not already installed:
+   ```bash
+   curl -L https://foundry.paradigm.xyz | bash
+   foundryup
+   ```
+4. Install dependencies:
+   ```bash
+   forge install
+   ```
+5. Compile the smart contract:
+   ```bash
+   forge build
+   ```
+6. Run tests:
+   ```bash
+   forge test
+   ```
+7. Deploy the contract to a local Anvil instance:
+   ```bash
+   anvil
+   forge script script/DeployFundMe.s.sol --fork-url http://127.0.0.1:8545 --broadcast
+   ```
+8. Interact with the deployed contract (optional):
+   Use the Forge console or scripts to test functionality like funding and withdrawing.
 
-### Format
+## References
 
-```shell
-$ forge fmt
-```
+- [Foundry Fundamentals Course - Cyfrin](https://updraft.cyfrin.io/courses/foundry)
+- [Course GitHub Repository](https://github.com/Cyfrin/foundry-full-course-cu)
 
-### Gas Snapshots
+## License
 
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+This project is licensed under the MIT License. See the LICENSE file for more details.
